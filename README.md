@@ -28,13 +28,18 @@
     <summary><b>Supported Plugins</b></summary>
     <ul>
         <li><input type="checkbox" checked disabled><label for=""><a href="https://github.com/goolord/alpha-nvim"> alpha-nvim</a></label></li>
+        <li><input type="checkbox" checked disabled><label for=""><a href="https://github.com/nvimdev/dashboard-nvim"> dashboard-nvim</a></label></li>
         <li><input type="checkbox" checked disabled><label for=""><a href="https://github.com/lewis6991/gitsigns.nvim"> gitsigns.nvim</a></label></li>
         <li><input type="checkbox" checked disabled><label for=""><a href="https://github.com/Zeioth/heirline-components.nvim"> heirline-components.nvim</a></label></li>
+        <li><input type="checkbox" checked disabled><label for=""><a href="https://github.com/lukas-reineke/indent-blankline.nvim"> indent-blankline.nvim</a></label></li>
         <li><input type="checkbox" checked disabled><label for=""><a href="https://github.com/folke/lazy.nvim"> lazy.nvim</a></label></li>
         <li><input type="checkbox" checked disabled><label for=""><a href="https://github.com/ggandor/leap.nvim"> leap.nvim</a></label></li>
         <li><input type="checkbox" checked disabled><label for=""><a href="https://github.com/nvim-lualine/lualine.nvim"> lualine.nvim</a></label></li>
+        <li><input type="checkbox" checked disabled><label for=""><a href="https://github.com/folke/noice.nvim"> noice.nvim</a></label></li>
         <li><input type="checkbox" checked disabled><label for=""><a href="https://github.com/hrsh7th/nvim-cmp"> nvim-cmp</a></label></li>
+        <li><input type="checkbox" checked disabled><label for=""><a href="https://github.com/rcarriga/nvim-notify"> nvim-notify</a></label></li>
         <li><input type="checkbox" checked disabled><label for=""><a href="https://github.com/nvim-treesitter/nvim-treesitter"> nvim-treesitter</a></label></li>
+        <li><input type="checkbox" checked disabled><label for=""><a href="https://github.com/nvim-treesitter/nvim-treesitter-context"> nvim-treesitter-context</a></label></li>
         <li><input type="checkbox" checked disabled><label for=""><a href="https://github.com/HiPhish/rainbow-delimiters.nvim"> rainbow-delimiters.nvim</a></label></li>
         <li><input type="checkbox" checked disabled><label for=""><a href="https://github.com/nvim-telescope/telescope.nvim"> telescope.nvim</a></label></li>
         <li><input type="checkbox" checked disabled><label for=""><a href="https://github.com/folke/which-key.nvim"> which-key.nvim</a></label></li>
@@ -53,25 +58,20 @@ Lazy:
     "scottmckendry/cyberdream.nvim",
     lazy = false,
     priority = 1000,
-    config = function()
-        require("cyberdream").setup({
-            -- Recommended - see "Configuring" below for more config options
-            transparent = true,
-            italic_comments = true,
-            hide_fillchars = true,
-            borderless_telescope = true,
-            terminal_colors = true,
-        })
-        vim.cmd("colorscheme cyberdream") -- set the colorscheme
-    end,
 }
+```
+
+Packer:
+
+```lua
+use { "scottmckendry/cyberdream.nvim" }
 ```
 
 Lualine (optional):
 
 ```lua
 {
-    local cyberdream = require("lualine.themes.cyberdream")
+    local cyberdream = require("lualine.themes.cyberdream") -- or require("lualine.themes.cyberdream-light") for the light variant
     require("lualine").setup({
         -- ... other config
         options = {
@@ -84,31 +84,39 @@ Lualine (optional):
 
 See my personal lualine config [here](https://github.com/scottmckendry/Windots/blob/main/nvim/lua/plugins/lualine.lua) for an example.
 
+## 🎨 Usage
+
+```lua
+vim.cmd("colorscheme cyberdream")
+```
+
 ## ⚙️ Configuring
 
-Below is an example of all the available configuration options:
+Calling `setup` is optional, but allows you to configure the theme to your liking.
+Below is an example of all the available configuration options with their default values:
 
 ```lua
 require("cyberdream").setup({
     -- Enable transparent background
-    transparent = true, -- Default: false
+    transparent = false,
 
     -- Enable italics comments
-    italic_comments = true, -- Default: false
+    italic_comments = false,
 
     -- Replace all fillchars with ' ' for the ultimate clean look
-    hide_fillchars = true, -- Default: false
+    hide_fillchars = false,
 
     -- Modern borderless telescope theme
-    borderless_telescope = true, -- Default: true
+    borderless_telescope = true,
 
     -- Set terminal colors used in `:terminal`
-    terminal_colors = true, -- Default: true
+    terminal_colors = true,
 
-    theme = { -- Default: nil
+    theme = {
+        variant = "default", -- use "light" for the light variant
         highlights = {
             -- Highlight groups to override, adding new groups is also possible
-            -- See `:help highlight-groups` for a list of highlight groups
+            -- See `:h highlight-groups` for a list of highlight groups or run `:hi` to see all groups and their current values
 
             -- Example:
             Comment = { fg = "#696969", bg = "NONE", italic = true },
@@ -127,6 +135,34 @@ require("cyberdream").setup({
     },
 })
 ```
+
+## 🧑‍🍳 Recipes
+
+Include these alongside the `setup` function to add additional functionality to the theme.
+
+#### Map a key to toggle between light and dark mode
+
+```lua
+-- Add a custom keybinding to toggle the colorscheme
+vim.api.nvim_set_keymap("n", "<leader>tt", ":CyberdreamToggleMode<CR>", { noremap = true, silent = true })
+```
+
+#### Create an `autocmd` to hook into the toggle event and run custom code
+
+```lua
+-- The event data property will contain a string with either "default" or "light" respectively
+vim.api.nvim_create_autocmd("User", {
+    pattern = "CyberdreamToggleMode",
+    callback = function(event)
+        -- Your custom code here!
+        -- For example, notify the user that the colorscheme has been toggled
+        print("Switched to " .. event.data .. " mode!")
+    end,
+})
+```
+
+![image](https://github.com/scottmckendry/cyberdream.nvim/assets/39483124/c0188d60-d62b-4a15-965d-a19757c484e6)
+
 
 ## 🤝 Contributing
 

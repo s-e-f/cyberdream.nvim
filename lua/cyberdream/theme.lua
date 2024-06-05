@@ -1,4 +1,5 @@
 local colors = require("cyberdream.colors")
+local util = require("cyberdream.util")
 
 local M = {}
 function M.setup()
@@ -7,6 +8,9 @@ function M.setup()
 
     local theme = {}
     local t = colors.default
+    if opts.theme.variant == "light" then
+        t = colors.light
+    end
 
     -- Override colors with user defined colors
     t = vim.tbl_deep_extend("force", t, opts.theme.colors)
@@ -40,7 +44,7 @@ function M.setup()
         ICursor = { fg = t.bg, bg = t.fg },
         CursorIM = { fg = t.bg, bg = t.fg },
         CursorColumn = { bg = t.bgHighlight },
-        CursorLine = { bg = t.bg },
+        CursorLine = { bg = (util.blend(t.bgAlt, t.bgHighlight)) },
         Directory = { fg = t.blue },
         DiffAdd = { fg = t.green },
         DiffChange = { fg = t.cyan },
@@ -55,7 +59,7 @@ function M.setup()
         SignColumn = { fg = t.grey, bg = t.bg },
         SignColumnSB = { fg = t.grey, bg = t.bg },
         Substitute = { fg = t.red, bg = t.bgHighlight },
-        LineNr = { fg = t.bgHighlight },
+        LineNr = { fg = util.blend(t.bgHighlight, t.fg, 0.9) },
         CursorLineNr = { fg = t.grey },
         MatchParen = { fg = t.pink, bg = t.bgHighlight },
         ModeMsg = { fg = t.fg },
@@ -109,6 +113,7 @@ function M.setup()
         Type = { fg = t.purple },
 
         Special = { fg = t.pink },
+        Delimiter = { fg = t.fg },
 
         Debug = { fg = t.orange },
 
@@ -205,6 +210,7 @@ function M.setup()
         TelescopePromptPrefix = { fg = t.pink },
         TelescopePreviewTitle = { fg = t.magenta },
         TelescopeSelection = { bg = t.bgHighlight },
+        TelescopePromptCounter = { fg = t.pink },
 
         -- Cmp
         CmpDocumentation = { fg = t.grey, bg = t.bg },
@@ -293,8 +299,31 @@ function M.setup()
         NotifyWARNTitle = { fg = t.yellow },
         NotifyBackground = { bg = t.bg },
 
+        -- Indent Blankline
+        IblIndent = { fg = util.blend(t.bgHighlight, t.bgAlt, 0.3) },
+        IblScope = { fg = t.bgHighlight },
+
+        -- TreeSitter Context
+        TreeSitterContext = { bg = util.blend(t.bgAlt, t.cyan, 0.9) },
+        TreeSitterContextLineNumber = { fg = util.blend(t.bgHighlight, t.fg) },
+
+        -- Mini Files
+        MiniFilesBorder = { fg = t.bgHighlight },
+        MiniFilesBorderModified = { fg = t.pink },
+        MiniFilesCursorLine = { bg = util.blend(t.bgHighlight, t.bgAlt, 0.3) },
+        MiniFilesDirectory = { fg = t.blue },
+        MiniFilesTitle = { fg = util.blend(t.bgHighlight, t.cyan, 0.7) },
+        MiniFilesTitleFocused = { fg = t.cyan },
+
+        -- Grapple
+        GrappleTitle = { fg = t.pink },
+        GrappleFooter = { fg = t.grey },
+        GrappleBorder = { fg = t.cyan },
+
         -- TreeSitter Specific
         ["@variable"] = { fg = t.fg },
+        ["@markup.strong"] = { fg = t.pink, bold = true },
+        ["@markup.italic"] = { fg = t.blue, italic = true },
     }
 
     if opts.borderless_telescope then
@@ -310,6 +339,11 @@ function M.setup()
         theme.highlights.TelescopeResultsBorder = { fg = t.bgAlt, bg = t.bgAlt }
         theme.highlights.TelescopeResultsNormal = { bg = t.bgAlt }
         theme.highlights.TelescopeResultsTitle = { fg = t.bgAlt, bg = t.bgAlt }
+
+        -- Mimic styling in Grapple
+        theme.highlights.GrappleNormal = { bg = t.bgAlt }
+        theme.highlights.GrappleBorder = { fg = t.bgAlt, bg = t.bgAlt }
+        theme.highlights.GrappleTitle = { fg = t.bgAlt, bg = t.cyan }
     end
 
     if opts.terminal_colors then

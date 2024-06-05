@@ -1,5 +1,77 @@
 # Changelog
 
+## [1.8.0](https://github.com/scottmckendry/cyberdream.nvim/compare/v1.7.0...v1.8.0) (2024-06-03)
+
+
+### Features
+
+* add vim cmd to toggle between theme modes ([#56](https://github.com/scottmckendry/cyberdream.nvim/issues/56)) ([17f9e55](https://github.com/scottmckendry/cyberdream.nvim/commit/17f9e55bd3c349006190e7ff8203c2af6b7e3051))
+* **extras:** add tmux extra ([#59](https://github.com/scottmckendry/cyberdream.nvim/issues/59)) ([9eb7c63](https://github.com/scottmckendry/cyberdream.nvim/commit/9eb7c63091d7369eba9015e9c656ca644ba6a3a4))
+
+## [1.7.0](https://github.com/scottmckendry/cyberdream.nvim/compare/v1.6.0...v1.7.0) (2024-05-18)
+
+
+### Features
+
+* add support for grapple.nvim ([638e37c](https://github.com/scottmckendry/cyberdream.nvim/commit/638e37c62cc04a354b4bc1e5daafecb9356be7d8))
+* **extras:** add support for kitty term ([#48](https://github.com/scottmckendry/cyberdream.nvim/issues/48)) ([3b57712](https://github.com/scottmckendry/cyberdream.nvim/commit/3b577123ca6d580c971fdc49ebf8950794c80d20))
+
+
+### Bug Fixes
+
+* add theme variant field to config class ([3b5e1df](https://github.com/scottmckendry/cyberdream.nvim/commit/3b5e1df018b239df0410fb94275a134913fd0c9f))
+* **docs:** small typo in readme ([0511451](https://github.com/scottmckendry/cyberdream.nvim/commit/0511451180b81fd821bd37bca2c61b8d049f69fc))
+* improve contrast for line numbers ([5827dc9](https://github.com/scottmckendry/cyberdream.nvim/commit/5827dc9a34b9f2d009ad8a75f4dd7121a3e77511))
+* low contrast counter in telelscope light theme ([0511451](https://github.com/scottmckendry/cyberdream.nvim/commit/0511451180b81fd821bd37bca2c61b8d049f69fc))
+
+## [1.6.0](https://github.com/scottmckendry/cyberdream.nvim/compare/v1.5.0...v1.6.0) (2024-05-11)
+
+
+### Features
+
+* add light colors variant ([#45](https://github.com/scottmckendry/cyberdream.nvim/issues/45)) ([548968a](https://github.com/scottmckendry/cyberdream.nvim/commit/548968a9ac9e9f9d3597c4abe976df030773af69))
+
+## [1.5.0](https://github.com/scottmckendry/cyberdream.nvim/compare/v1.4.0...v1.5.0) (2024-05-07)
+
+
+### Features
+
+* add lua type annotations to config ([cf39bc4](https://github.com/scottmckendry/cyberdream.nvim/commit/cf39bc40cd4cae374aef569f7b985323e083cd15))
+* add support for mini.files ([2615669](https://github.com/scottmckendry/cyberdream.nvim/commit/2615669d9815d1e975d2a3ffba5fb78745e25378))
+* **extras:** add lazydocker extra ([eecc28a](https://github.com/scottmckendry/cyberdream.nvim/commit/eecc28a0cdf43b1bc74b4d5f031baff26a4be551))
+* **extras:** add support for zellij ([#40](https://github.com/scottmckendry/cyberdream.nvim/issues/40)) ([a9cb4b2](https://github.com/scottmckendry/cyberdream.nvim/commit/a9cb4b229127e1b06964e73b5d55fad300b560be))
+
+
+### Bug Fixes
+
+* markdown bold and italic highlights on v9.5 ([f8342c9](https://github.com/scottmckendry/cyberdream.nvim/commit/f8342c96d4d0bfc39490a866e5e66316881571be)), closes [#32](https://github.com/scottmckendry/cyberdream.nvim/issues/32)
+
+## [1.4.0](https://github.com/scottmckendry/cyberdream.nvim/compare/v1.3.0...v1.4.0) (2024-05-05)
+
+
+### Features
+
+* add helix theme extra ([#28](https://github.com/scottmckendry/cyberdream.nvim/issues/28)) ([2420116](https://github.com/scottmckendry/cyberdream.nvim/commit/24201167df02088f66577831742d120d10a554ce))
+* **CI:** update CI and other QoL updates ([#39](https://github.com/scottmckendry/cyberdream.nvim/issues/39)) ([5f60b64](https://github.com/scottmckendry/cyberdream.nvim/commit/5f60b64e16fbc870992e6414e21ae08607b7f883))
+* **extras:** auto-generate extras ([#37](https://github.com/scottmckendry/cyberdream.nvim/issues/37)) ([61b2a27](https://github.com/scottmckendry/cyberdream.nvim/commit/61b2a27784bbaaa3c5a7783d951b8743164fb070))
+* **gitui:** Basic theme setup for gitui ([#36](https://github.com/scottmckendry/cyberdream.nvim/issues/36)) ([03251ad](https://github.com/scottmckendry/cyberdream.nvim/commit/03251adb7ac5c29867f0658c613599af329cf917))
+
+## [1.3.0](https://github.com/scottmckendry/cyberdream.nvim/compare/v1.2.1...v1.3.0) (2024-05-03)
+
+
+### Features
+
+* add support for indent-blankline ([a9eb003](https://github.com/scottmckendry/cyberdream.nvim/commit/a9eb003663010322b3acbf41740dd8024f24acb9))
+* add support for treesitter-context ([ef2cbcc](https://github.com/scottmckendry/cyberdream.nvim/commit/ef2cbccda1197f5ed07d52177456c14db27fd0f5))
+
+## [1.2.1](https://github.com/scottmckendry/cyberdream.nvim/compare/v1.2.0...v1.2.1) (2024-04-30)
+
+
+### Bug Fixes
+
+* differentiate matches when replacing with /gc ([d777f1b](https://github.com/scottmckendry/cyberdream.nvim/commit/d777f1bfb0e6e1d74b3f243d8e4999b6b931ae19))
+* set CursorLine hl to visible color ([528085b](https://github.com/scottmckendry/cyberdream.nvim/commit/528085bc1760a76ff4e9aba4d85b0d39d2486866))
+
 ## [1.2.0](https://github.com/scottmckendry/cyberdream.nvim/compare/v1.1.0...v1.2.0) (2024-04-28)
 
 
